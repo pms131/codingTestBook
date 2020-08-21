@@ -5,33 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-class Node {
-	private int index;
-	private int distance;
-	
-	public Node(int index, int distance) {
-		this.index = index;
-		this.distance = distance;
-	}
-
-	public int getIndex() {
-		return index;
-	}
-
-	public void setIndex(int index) {
-		this.index = index;
-	}
-
-	public int getDistance() {
-		return distance;
-	}
-
-	public void setDistance(int distance) {
-		this.distance = distance;
-	}
-
-}
-
 public class Dijkstra {
 	
     public static final int INF = (int) 1e9; // 무한을 의미하는 값으로 10억을 설정
@@ -53,7 +26,7 @@ public class Dijkstra {
 		m = sc.nextInt();			// 간선의 개수
 		start = sc.nextInt();		// 시작 node
 		
-		for (int i=0; i<n; i++) {
+		for (int i=0; i<=n; i++) {
 			graph.add(new ArrayList<Node>());
 		}
 		
@@ -82,7 +55,7 @@ public class Dijkstra {
 		dist[start] = 0;
 		visited[start] = true;
 		//시작 노드와 거리 초기화
-		for (int i=0; i<=graph.get(start).size(); i++) {
+		for (int i=0; i<graph.get(start).size(); i++) {
 			dist[graph.get(start).get(i).getIndex()] = graph.get(start).get(i).getDistance();
 		}
 		
@@ -93,7 +66,7 @@ public class Dijkstra {
 			visited[now] = true;
 			
 			//현재 노드와 연결된 다른 노드 확인
-			for (int j=0; j<graph.get(now).size(); j++) {
+			for (int j=0; j < graph.get(now).size(); j++) {
 				int cost = dist[now] + graph.get(now).get(j).getDistance();
 				
 				if (cost < dist[graph.get(now).get(j).getIndex()]) {
@@ -106,7 +79,7 @@ public class Dijkstra {
 	public static int getSmallestNode() {
 		int min_value = INF;
 		int index = 0;
-		for (int i=0; i<=n; i++) {
+		for (int i=1; i<=n; i++) {
 			if (dist[i] < min_value && !visited[i]) {
 				min_value = dist[i];
 				index = i;
