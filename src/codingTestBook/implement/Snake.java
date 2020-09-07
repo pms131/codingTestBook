@@ -1,3 +1,4 @@
+
 package codingTestBook.implement;
 
 import java.util.ArrayList;
@@ -72,7 +73,7 @@ public class Snake {
 		int n = sc.nextInt();				// 보드의 크기 (2 <= n <= 100)
 		int k = sc.nextInt();				// 사과의 개수 (0 <= k <= 100)
 		
-		int[][] map = new int[101][101];
+		int[][] map = new int[n][n];
 		int[] dx = {1, 0, -1, 0};
 		int[] dy = {0, 1, 0, -1};
 		int x = 0;
